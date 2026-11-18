@@ -61,6 +61,7 @@
 </template>
 
 <script>
+import { API_BASE } from "../config";
 export default {
     data() {
         return {
@@ -109,7 +110,7 @@ export default {
             }else this.savePostdata()
         },
         getData() {
-            this.axios.get('http://localhost:3000/api/v1/products',{
+            this.axios.get(`${API_BASE}/api/v1/products`,{
                 header:{
                     Authorization: `Bearer $token`
                 }
@@ -120,7 +121,7 @@ export default {
         },
         async savePostdata () {
             try {
-                const {data} = await this.axios.post('http://localhost:3000/api/v1/products', this.postdata) // ตัว this.postdata คือตัวที่เราจะส่งมาทำการเพิ่มข้อมูล
+                const {data} = await this.axios.post(`${API_BASE}/api/v1/products`, this.postdata) // ตัว this.postdata คือตัวที่เราจะส่งมาทำการเพิ่มข้อมูล
                 console.log(data)
                 alert('Save product complete')
                 this.getData()
@@ -132,7 +133,7 @@ export default {
         },
         async savePutdata () {
             try {
-                const {data} = await this.axios.put('http://localhost:3000/api/v1/products/'+this.id, this.postdata) // ตัว this.postdata คือตัวที่เราจะส่งมาทำการเพิ่มข้อมูล
+                const {data} = await this.axios.put(`${API_BASE}/api/v1/products/`+this.id, this.postdata) // ตัว this.postdata คือตัวที่เราจะส่งมาทำการเพิ่มข้อมูล
                 console.log(data)
                 alert('Update product complete')
                 this.getData()
@@ -145,7 +146,7 @@ export default {
         async deleteItem (item) {
             if(confirm('Delete '+item.name))
             try {
-                const {data} = await this.axios.delete('http://localhost:3000/api/v1/products/'+item._id) // ตัว this.postdata คือตัวที่เราจะส่งมาทำการเพิ่มข้อมูล
+                const {data} = await this.axios.delete(`${API_BASE}/api/v1/products/`+item._id) // ตัว this.postdata คือตัวที่เราจะส่งมาทำการเพิ่มข้อมูล
                 console.log(data)
                 alert('Delete product complete')
                 this.getData()
