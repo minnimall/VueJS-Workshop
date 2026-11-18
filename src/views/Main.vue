@@ -41,6 +41,7 @@
 </template>
 
 <script>
+import { API_BASE } from "../config";
 import { toast } from "../store/toast";
 
 export default {
@@ -72,14 +73,14 @@ export default {
     methods: {
         imageUrl(path) {
             if (!path) return "";
-            return path.startsWith("http") ? path : `http://localhost:3000${path}`;
+            return path.startsWith("http") ? path : `${API_BASE}${path}`;
         },
         async getProducts() {
             this.loading = true;
             this.errorMsg = "";
             try {
                 const { data } = await this.axios.get(
-                    "http://localhost:3000/api/v1/products"
+                    `${API_BASE}/api/v1/products`
                 );
                 // รองรับทั้ง [ ... ] และ { data: [ ... ] }
                 this.products = Array.isArray(data) ? data : data.data || [];

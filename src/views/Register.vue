@@ -115,6 +115,7 @@
 </template>
 
 <script>
+import { API_BASE } from "../config";
 import { toast } from "../store/toast";
 
 export default {
@@ -146,7 +147,7 @@ export default {
             }
             this.loading = true;
             try {
-                const res = await this.axios.post("http://localhost:3000/api/v1/register", {
+                const res = await this.axios.post(`${API_BASE}/api/v1/register`, {
                     username: this.form.username,
                     name: this.form.name,
                     tel: this.form.tel,

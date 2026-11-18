@@ -310,6 +310,7 @@
 
 
 <script>
+import { API_BASE } from "../config";
 const ROLE_TEXT = { user: "ลูกค้า", shop: "ร้านค้า", admin: "แอดมิน" };
 
 const STAT_IMG = {
@@ -405,7 +406,7 @@ export default {
             this.errorMsg = "";
             try {
                 const { data } = await this.axios.get(
-                    "http://localhost:3000/api/v1/admin/users",
+                    `${API_BASE}/api/v1/admin/users`,
                     this.authHeader()
                 );
                 this.users = Array.isArray(data) ? data : data.data || [];
@@ -434,7 +435,7 @@ export default {
             this.busyId = u._id;
             try {
                 await this.axios.patch(
-                    `http://localhost:3000/api/v1/admin/users/${u._id}/approve`,
+                    `${API_BASE}/api/v1/admin/users/${u._id}/approve`,
                     { approve: this.nextApprove },
                     this.authHeader()
                 );

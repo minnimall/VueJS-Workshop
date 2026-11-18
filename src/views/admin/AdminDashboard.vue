@@ -122,6 +122,7 @@
 </template>
 
 <script>
+import { API_BASE } from "../config";
 const STAT_IMG = {
     users: require("../../assets/playzo/แมวมือ.png"),
     pending: require("../../assets/playzo/meowapprove.jpg"),
@@ -227,7 +228,7 @@ export default {
             this.errorMsg = "";
             try {
                 const { data } = await this.axios.get(
-                    "http://localhost:3000/api/v1/admin/stats",
+                    `${API_BASE}/api/v1/admin/stats`,
                     { headers: { Authorization: `Bearer ${this.$store.state.token}` } }
                 );
                 this.stats = data.data || data;

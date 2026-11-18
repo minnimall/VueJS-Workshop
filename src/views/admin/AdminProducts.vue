@@ -182,6 +182,7 @@
 
 
 <script>
+import { API_BASE } from "../config";
 const STAT_IMG = {
     total: require("../../assets/playzo/จอยplay.jpg"),
     low: require("../../assets/playzo/จอยplay.jpg"),
@@ -249,14 +250,14 @@ export default {
     methods: {
         imageUrl(path) {
             if (!path) return "";
-            return path.startsWith("http") ? path : `http://localhost:3000${path}`;
+            return path.startsWith("http") ? path : `${API_BASE}${path}`;
         },
         async load() {
             this.loading = true;
             this.errorMsg = "";
             try {
                 const { data } = await this.axios.get(
-                    "http://localhost:3000/api/v1/admin/products",
+                    `${API_BASE}/api/v1/admin/products`,
                     { headers: { Authorization: `Bearer ${this.$store.state.token}` } }
                 );
                 this.products = Array.isArray(data) ? data : data.data || [];

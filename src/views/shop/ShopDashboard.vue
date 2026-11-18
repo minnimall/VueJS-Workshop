@@ -106,6 +106,7 @@
 </template>
 
 <script>
+import { API_BASE } from "../config";
 const LOW_STOCK = 5; // ถือว่าใกล้หมดเมื่อเหลือไม่เกินกี่ชิ้น
 
 const STAT_IMG = {
@@ -177,7 +178,7 @@ export default {
         },
         imageUrl(path) {
             if (!path) return "";
-            return path.startsWith("http") ? path : `http://localhost:3000${path}`;
+            return path.startsWith("http") ? path : `${API_BASE}${path}`;
         },
         orderTotal(o) {
             return o.product ? o.product.price * o.quantity : 0;
@@ -193,8 +194,8 @@ export default {
             };
             try {
                 const [p, o] = await Promise.all([
-                    this.axios.get("http://localhost:3000/api/v1/products/mine", config),
-                    this.axios.get("http://localhost:3000/api/v1/orders/mine/shop", config),
+                    this.axios.get(`${API_BASE}/api/v1/products/mine`, config),
+                    this.axios.get(`${API_BASE}/api/v1/orders/mine/shop`, config),
                 ]);
                 this.products = this.list(p);
                 this.orders = this.list(o);

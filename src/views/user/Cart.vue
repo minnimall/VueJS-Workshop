@@ -142,6 +142,7 @@
 </template>
 
 <script>
+import { API_BASE } from "../config";
 import { cart, setQty, removeItem } from "../../store/cart";
 import { toast } from "../../store/toast";
 
@@ -169,7 +170,7 @@ export default {
         },
         imageUrl(path) {
             if (!path) return "";
-            return path.startsWith("http") ? path : `http://localhost:3000${path}`;
+            return path.startsWith("http") ? path : `${API_BASE}${path}`;
         },
         changeQty(item, qty) {
             setQty(item._id, qty);
@@ -192,7 +193,7 @@ export default {
             for (const item of [...this.items]) {
                 try {
                     await this.axios.post(
-                        `http://localhost:3000/api/v1/products/${item._id}/orders`,
+                        `${API_BASE}/api/v1/products/${item._id}/orders`,
                         { quantity: item.qty },
                         { headers: { Authorization: `Bearer ${token}` } }
                     );

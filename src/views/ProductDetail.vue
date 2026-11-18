@@ -112,6 +112,7 @@
 </template>
 
 <script>
+import { API_BASE } from "../config";
 import { addItem } from "../store/cart";
 
 export default {
@@ -130,13 +131,13 @@ export default {
     methods: {
         imageUrl(path) {
             if (!path) return "";
-            return path.startsWith("http") ? path : `http://localhost:3000${path}`;
+            return path.startsWith("http") ? path : `${API_BASE}${path}`;
         },
         async getProduct() {
             this.loading = true;
             try {
                 const { data } = await this.axios.get(
-                    `http://localhost:3000/api/v1/products/${this.$route.params.id}`
+                    `${API_BASE}/api/v1/products/${this.$route.params.id}`
                 );
                 // รองรับทั้ง { ... } และ { data: { ... } }
                 this.product = data.data || data;

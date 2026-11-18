@@ -49,6 +49,7 @@
 </template>
 
 <script>
+import { API_BASE } from "../config";
 import { toast } from "../store/toast";
 
 const HOME = { shop: "shop-home", admin: "admin-home" };
@@ -74,7 +75,7 @@ export default {
             this.loading = true;
             try {
                 const res = await this.axios.post(
-                    "http://localhost:3000/api/v1/login",
+                    `${API_BASE}/api/v1/login`,
                     this.form
                 );
                 // รองรับทั้ง { data: { token, user } } และ { token, user }

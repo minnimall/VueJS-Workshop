@@ -68,6 +68,7 @@
 </template>
 
 <script>
+import { API_BASE } from "../config";
 export default {
     name: "OrdersView",
     data() {
@@ -83,7 +84,7 @@ export default {
     methods: {
         imageUrl(path) {
             if (!path) return "";
-            return path.startsWith("http") ? path : `http://localhost:3000${path}`;
+            return path.startsWith("http") ? path : `${API_BASE}:3000${path}`;
         },
         total(o) {
             const price = o.product ? o.product.price : 0;
@@ -111,7 +112,7 @@ export default {
             this.errorMsg = "";
             try {
                 const { data } = await this.axios.get(
-                    "http://localhost:3000/api/v1/orders/mine",
+                    `${API_BASE}0/api/v1/orders/mine`,
                     { headers: { Authorization: `Bearer ${token}` } }
                 );
                 this.orders = Array.isArray(data) ? data : data.data || [];

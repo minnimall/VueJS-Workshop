@@ -264,10 +264,11 @@
 </template>
 
 <script>
-const API = "http://localhost:3000/api/v1/products";
-const MAX_SIZE = 10 * 1024 * 1024;
-
+import { API_BASE } from "../../config";
 import { toast } from "../../store/toast";
+
+const API = `${API_BASE}/api/v1/products`;
+const MAX_SIZE = 10 * 1024 * 1024;
 
 export default {
     name: "ShopProducts",
@@ -306,7 +307,7 @@ export default {
         },
         imageUrl(path) {
             if (!path) return "";
-            return path.startsWith("http") ? path : `http://localhost:3000${path}`;
+            return path.startsWith("http") ? path : `${API_BASE}${path}`;
         },
 
         async getProducts() { //ดึงข้อมูลสินค้า product 

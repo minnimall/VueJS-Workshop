@@ -51,6 +51,7 @@
 </template>
 
 <script>
+import { API_BASE } from "../config";
 export default {
     name: "ShopProductForm",
     data() {
@@ -76,7 +77,7 @@ export default {
         },
         imageUrl(path) {
             if (!path) return "";
-            return path.startsWith("http") ? path : `http://localhost:3000${path}`;
+            return path.startsWith("http") ? path : `${API_BASE}${path}`;
         },
         onFile(e) {
             const f = e.target.files[0] || null;
@@ -93,7 +94,7 @@ export default {
             this.loading = true;
             try {
                 const { data } = await this.axios.get(
-                    `http://localhost:3000/api/v1/products/${this.$route.params.id}`
+                    `${API_BASE}/api/v1/products/${this.$route.params.id}`
                 );
                 const p = data.data || data;
                 this.form = {
@@ -126,7 +127,7 @@ export default {
 
             this.saving = true;
             try {
-                const url = "http://localhost:3000/api/v1/products";
+                const url = `${API_BASE}/api/v1/products`;
                 const config = { headers: this.authHeader() };
                 console.log("file:", this.file);
                 for (const [k, v] of fd.entries()) console.log(k, v);
