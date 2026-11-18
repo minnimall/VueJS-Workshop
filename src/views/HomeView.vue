@@ -1,18 +1,15 @@
-<template>
-  <div class="home">
-    <img alt="Vue logo" src="../assets/logo.png">
-    <HelloWorld msg="Welcome to Your Vue.js App"/>
-  </div>
+<template> <!-- ส่วนเรียกใช้ตัวของ components -->
+  <HelloWorld />
 </template>
 
-<script>
-// @ is an alias to /src
-import HelloWorld from '@/components/HelloWorld.vue'
+<script> 
+  import HelloWorld from '../components/HelloWorld' //ส่วนการนำเข้าของ components
 
-export default {
-  name: 'HomeView',
-  components: {
-    HelloWorld
+  export default {
+    name: 'Home',
+
+     components: { //ส่วนประกาศตัวของ components
+      HelloWorld,
+    },
   }
-}
 </script>
