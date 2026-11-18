@@ -1,6 +1,5 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router'
-import HomeView from '../views/HomeView.vue'
 import store from '../store'
 
 Vue.use(VueRouter)
@@ -17,8 +16,7 @@ VueRouter.prototype.push = function push(location) {
 const routes = [
   {
     path: '/',
-    name: 'home',
-    component: HomeView
+    redirect: '/main'
   },
   {
     path: '/port',
@@ -26,7 +24,7 @@ const routes = [
     component: () => import('../views/Portfolio.vue')
   },
   { 
-    path: '/',
+    path: '/toolbar',
     name: 'toolbar',
     component: () => import('../views/Toolbar.vue'),
     children:[ // ส่วนของ Nest Route
