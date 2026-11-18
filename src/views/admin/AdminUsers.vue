@@ -310,7 +310,7 @@
 
 
 <script>
-import { API_BASE } from "../config";
+import { API_BASE } from "../../config";
 const ROLE_TEXT = { user: "ลูกค้า", shop: "ร้านค้า", admin: "แอดมิน" };
 
 const STAT_IMG = {

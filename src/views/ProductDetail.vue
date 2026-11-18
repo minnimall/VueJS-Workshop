@@ -112,7 +112,7 @@
 </template>
 
 <script>
-import { API_BASE } from "../config";
+import { API_BASE } from "../../config";
 import { addItem } from "../store/cart";
 
 export default {

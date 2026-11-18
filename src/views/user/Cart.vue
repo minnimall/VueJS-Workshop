@@ -142,7 +142,7 @@
 </template>
 
 <script>
-import { API_BASE } from "../config";
+import { API_BASE } from "../../config";
 import { cart, setQty, removeItem } from "../../store/cart";
 import { toast } from "../../store/toast";
 

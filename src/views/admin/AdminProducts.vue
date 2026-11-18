@@ -182,7 +182,7 @@
 
 
 <script>
-import { API_BASE } from "../config";
+import { API_BASE } from "../../config";
 const STAT_IMG = {
     total: require("../../assets/playzo/จอยplay.jpg"),
     low: require("../../assets/playzo/จอยplay.jpg"),

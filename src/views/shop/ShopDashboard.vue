@@ -106,7 +106,7 @@
 </template>
 
 <script>
-import { API_BASE } from "../config";
+import { API_BASE } from "../../config";
 const LOW_STOCK = 5; // ถือว่าใกล้หมดเมื่อเหลือไม่เกินกี่ชิ้น
 
 const STAT_IMG = {

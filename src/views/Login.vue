@@ -49,7 +49,7 @@
 </template>
 
 <script>
-import { API_BASE } from "../config";
+import { API_BASE } from "../../config";
 import { toast } from "../store/toast";
 
 const HOME = { shop: "shop-home", admin: "admin-home" };

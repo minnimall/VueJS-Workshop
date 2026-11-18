@@ -122,7 +122,7 @@
 </template>
 
 <script>
-import { API_BASE } from "../config";
+import { API_BASE } from "../../config";
 const STAT_IMG = {
     users: require("../../assets/playzo/แมวมือ.png"),
     pending: require("../../assets/playzo/meowapprove.jpg"),

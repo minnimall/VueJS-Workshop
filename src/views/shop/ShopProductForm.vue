@@ -51,7 +51,7 @@
 </template>
 
 <script>
-import { API_BASE } from "../config";
+import { API_BASE } from "../../config";
 export default {
     name: "ShopProductForm",
     data() {
